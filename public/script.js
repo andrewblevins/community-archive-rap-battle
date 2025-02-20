@@ -9,23 +9,34 @@ document.addEventListener('DOMContentLoaded', async () => {
     async function fetchUsers() {
         try {
             const response = await fetch('/api/users');
-            const users = await response.json();
-            users.forEach(user => {
-                const option1 = document.createElement('option');
-                option1.value = user.account_id;
-                option1.textContent = user.username;
-                user1Dropdown.appendChild(option1);
+            const data = await response.json();
 
-                const option2 = document.createElement('option');
-                option2.value = user.account_id;
-                option2.textContent = user.username;
-                user2Dropdown.appendChild(option2);
-            });
-            generateBtn.disabled = false;
+            if (!response.ok) {
+                throw new Error(data.error || 'Failed to fetch users');
+            }
+
+            populateDropdowns(data);
         } catch (error) {
             console.error('Error fetching users:', error);
             alert('Failed to load users. Please try again later.');
         }
+    }
+
+    // Populate dropdowns with user data
+    function populateDropdowns(users) {
+        users.forEach(user => {
+            const option1 = document.createElement('option');
+            option1.value = user.account_id;
+            option1.textContent = user.username;
+            user1Dropdown.appendChild(option1);
+
+            const option2 = document.createElement('option');
+            option2.value = user.account_id;
+            option2.textContent = user.username;
+            user2Dropdown.appendChild(option2);
+        });
+
+        generateBtn.disabled = false;
     }
 
     // Fetch tweets and generate rap lyrics
