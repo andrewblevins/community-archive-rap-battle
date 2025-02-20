@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import fetch from 'node-fetch';
+import Anthropic from '@anthropic-ai/sdk';
 
 // Load environment variables
 dotenv.config();
@@ -11,8 +12,12 @@ const PORT = process.env.PORT || 3000;
 const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_ANON_KEY;
 
+const anthropic = new Anthropic({
+  apiKey: process.env.CLAUDE_API_KEY, // Ensure this is set in your .env file
+});
+
 // Middleware to parse JSON
-app.use(express.json());
+app.use(express.json({ limit: '1mb' }));
 
 // Serve static files from the 'public' directory
 app.use(express.static('public'));
@@ -23,25 +28,14 @@ app.post('/api/claude', async (req, res) => {
     const prompt = `Here are archives of two twitter accounts. Please write lyrics for a rap battle expressing their main worldview and ideas, focusing on the disagreements or differences in emphasis. Be creative and punchy, get to the heart of who both people are. Use the same words and turns of phrase that they use in they tweets, directly quoting when possible.`;
 
     try {
-        const response = await fetch('CLAUDE_API_URL', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${process.env.CLAUDE_API_KEY}`
-            },
-            body: JSON.stringify({ prompt, tweets1, tweets2 })
+        const msg = await anthropic.messages.create({
+            model: "claude-3-5-sonnet-20241022",
+            max_tokens: 1024,
+            messages: [{ role: "user", content: prompt }],
         });
 
-        const responseText = await response.text();
-        console.log('Claude API response:', responseText);
-
-        if (response.ok) {
-            const data = JSON.parse(responseText);
-            res.json(data);
-        } else {
-            console.error('Error from Claude API:', responseText);
-            res.status(500).json({ error: 'Failed to generate rap lyrics' });
-        }
+        console.log('Claude API response:', msg);
+        res.json(msg);
     } catch (error) {
         console.error('Error calling Claude API:', error);
         res.status(500).json({ error: 'Failed to generate rap lyrics' });

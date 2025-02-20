@@ -54,13 +54,19 @@ document.addEventListener('DOMContentLoaded', async () => {
         loader.textContent = 'Generating rap BATTLE. Who will DESTROy who??';
 
         try {
-            const tweets1 = await fetch(`/api/tweets?userId=${user1Id}&limit=100`).then(res => res.json());
+            const tweets1 = await fetch(`/api/tweets?userId=${user1Id}&limit=50`).then(res => res.json());
             console.log('Tweets for User 1:', tweets1);
 
-            const tweets2 = await fetch(`/api/tweets?userId=${user2Id}&limit=100`).then(res => res.json());
+            const tweets2 = await fetch(`/api/tweets?userId=${user2Id}&limit=50`).then(res => res.json());
             console.log('Tweets for User 2:', tweets2);
 
-            const requestBody = { tweets1, tweets2 };
+            // Concatenate tweets into a single string for each user
+            const tweets1Text = tweets1.map(tweet => tweet.full_text).join('\n');
+            const tweets2Text = tweets2.map(tweet => tweet.full_text).join('\n');
+
+            const prompt = `Here are archives of two twitter accounts. User 1: ${tweets1Text} User 2: ${tweets2Text}. Please write lyrics for a rap battle expressing their main worldview and ideas, focusing on the disagreements or differences in emphasis. Be creative and punchy, get to the heart of who both people are. Use the same words and turns of phrase that they use in their tweets, directly quoting when possible.`;
+
+            const requestBody = { prompt };
             console.log('Data sent to Claude API:', requestBody);
 
             const response = await fetch('/api/claude', {
@@ -74,11 +80,13 @@ document.addEventListener('DOMContentLoaded', async () => {
             const responseData = await response.json();
             console.log('Claude API response data:', responseData);
 
-            const { lyrics } = responseData;
-            if (!lyrics) {
+            const { content } = responseData;
+            if (!content || content.length === 0) {
                 throw new Error('Lyrics not found in response');
             }
 
+            // Assuming content is an array of objects with a 'text' field
+            const lyrics = content.map(item => item.text);
             displayRapLyrics(lyrics, user1Id, user2Id);
         } catch (error) {
             console.error('Error generating rap:', error);
