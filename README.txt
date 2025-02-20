@@ -8,6 +8,9 @@ This project is an app that generates rap battles between two Twitter users base
 - Generates rap lyrics using the Claude API.
 - Displays the rap battle with styled text for each user.
 
+TODO 
+- Use API to auto-generate song using Suno and provide link.
+
 ## Authors
 
 - [Andrew](https://x.com/andrew0blevins)
