@@ -9,19 +9,36 @@
 <body>
     <div class="container">
         <h1>Rap Battle Generator</h1>
-        <div class="dropdowns">
-            <select id="user1-dropdown">
-                <option value="">Select User 1</option>
-                <!-- Options will be populated dynamically -->
-            </select>
-            <select id="user2-dropdown">
-                <option value="">Select User 2</option>
-                <!-- Options will be populated dynamically -->
-            </select>
+        
+        <div class="battle-selectors">
+            <div class="selector">
+                <label for="user1-dropdown">First Rapper</label>
+                <select id="user1-dropdown">
+                    <option value="">Select a user...</option>
+                    <!-- Options will be populated dynamically -->
+                </select>
+            </div>
+
+            <div class="vs">VS</div>
+
+            <div class="selector">
+                <label for="user2-dropdown">Second Rapper</label>
+                <select id="user2-dropdown">
+                    <option value="">Select a user...</option>
+                    <!-- Options will be populated dynamically -->
+                </select>
+            </div>
         </div>
-        <button id="generate-btn" disabled>Generate</button>
-        <div id="loader" class="loader hidden">Loading...</div>
-        <div id="rap-lyrics" class="rap-lyrics hidden"></div>
+
+        <button id="generate-btn" disabled>Generate Battle!</button>
+
+        <div id="loader" class="loader hidden">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+
+        <div id="rap-lyrics" class="battle-result hidden"></div>
     </div>
     <script src="script.js"></script>
 </body>
