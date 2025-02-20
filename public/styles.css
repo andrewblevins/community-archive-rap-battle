@@ -1,0 +1,74 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    text-align: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.dropdowns {
+    margin-bottom: 20px;
+}
+
+select {
+    padding: 10px;
+    margin: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+    background-color: #0056b3;
+}
+
+.loader {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #007bff;
+}
+
+.hidden {
+    display: none;
+}
+
+.rap-lyrics {
+    margin-top: 20px;
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: left;
+}
+
+.rap-lyrics span.user1 {
+    color: #ff5733;
+}
+
+.rap-lyrics span.user2 {
+    color: #33c3ff;
+} 
