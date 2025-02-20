@@ -24,8 +24,8 @@ app.use(express.static('public'));
 
 // Route to handle Claude API request
 app.post('/api/claude', async (req, res) => {
-    const { tweets1, tweets2 } = req.body;
-    const prompt = `Here are archives of two twitter accounts. Please write lyrics for a rap battle expressing their main worldview and ideas, focusing on the disagreements or differences in emphasis. Be creative and punchy, get to the heart of who both people are. Use the same words and turns of phrase that they use in they tweets, directly quoting when possible.`;
+    const { prompt } = req.body; // Use the prompt from the client
+    console.log('Received request body:', req.body); // Log the request body
 
     try {
         const msg = await anthropic.messages.create({

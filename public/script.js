@@ -49,6 +49,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             return;
         }
 
+        const user1Name = user1Dropdown.options[user1Dropdown.selectedIndex].text;
+        const user2Name = user2Dropdown.options[user2Dropdown.selectedIndex].text;
+
         generateBtn.disabled = true;
         loader.classList.remove('hidden');
         loader.textContent = 'Generating rap BATTLE. Who will DESTROy who??';
@@ -61,10 +64,10 @@ document.addEventListener('DOMContentLoaded', async () => {
             console.log('Tweets for User 2:', tweets2);
 
             // Concatenate tweets into a single string for each user
-            const tweets1Text = tweets1.map(tweet => tweet.full_text).join('\n');
-            const tweets2Text = tweets2.map(tweet => tweet.full_text).join('\n');
+            const tweets1Text = tweets1.map(tweet => `- ${tweet.full_text}`).join('\n');
+            const tweets2Text = tweets2.map(tweet => `- ${tweet.full_text}`).join('\n');
 
-            const prompt = `Here are archives of two twitter accounts. User 1: ${tweets1Text} User 2: ${tweets2Text}. Please write lyrics for a rap battle expressing their main worldview and ideas, focusing on the disagreements or differences in emphasis. Be creative and punchy, get to the heart of who both people are. Use the same words and turns of phrase that they use in their tweets, directly quoting when possible.`;
+            const prompt = `Create a rap battle between two Twitter users based on their tweets. Focus on their main ideas and differences. Use their words and phrases directly when possible.\n\n${user1Name} Tweets:\n${tweets1Text}\n\n${user2Name} Tweets:\n${tweets2Text}`;
 
             const requestBody = { prompt };
             console.log('Data sent to Claude API:', requestBody);
@@ -85,9 +88,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 throw new Error('Lyrics not found in response');
             }
 
-            // Assuming content is an array of objects with a 'text' field
-            const lyrics = content.map(item => item.text);
-            displayRapLyrics(lyrics, user1Id, user2Id);
+            displayRapLyrics(content, user1Name, user2Name);
         } catch (error) {
             console.error('Error generating rap:', error);
             alert('Failed to generate rap. Please try again later.');
@@ -98,15 +99,35 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     // Display rap lyrics with styling
-    function displayRapLyrics(lyrics, user1Id, user2Id) {
-        rapLyrics.innerHTML = '';
-        lyrics.forEach(line => {
+    function displayRapLyrics(lyricsArray, user1Name, user2Name) {
+        rapLyrics.innerHTML = ''; // Clear any existing content
+
+        // Concatenate all text fields into a single string
+        const lyrics = lyricsArray.map(item => item.text).join('\n');
+
+        // Replace placeholders with actual usernames
+        const updatedLyrics = lyrics.replace(/User 1/g, user1Name).replace(/User 2/g, user2Name);
+
+        // Split the concatenated string into lines
+        const lines = updatedLyrics.split('\n');
+
+        lines.forEach(line => {
             const span = document.createElement('span');
-            span.textContent = line.text;
-            span.classList.add(line.userId === user1Id ? 'user1' : 'user2');
+            span.textContent = line;
+            
+            // Add a class based on the user (optional, if you want to style differently)
+            if (line.includes(`[Verse 1: ${user1Name}]`) || line.includes(`[Verse 3: ${user1Name}]`)) {
+                span.classList.add('user1');
+            } else if (line.includes(`[Verse 2: ${user2Name}]`) || line.includes(`[Verse 4: ${user2Name}]`)) {
+                span.classList.add('user2');
+            } else {
+                span.classList.add('both'); // For shared lines or outros
+            }
+
             rapLyrics.appendChild(span);
-            rapLyrics.appendChild(document.createElement('br'));
+            rapLyrics.appendChild(document.createElement('br')); // Add a line break
         });
+
         rapLyrics.classList.remove('hidden');
     }
 
