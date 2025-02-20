@@ -55,17 +55,30 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         try {
             const tweets1 = await fetch(`/api/tweets?userId=${user1Id}&limit=100`).then(res => res.json());
+            console.log('Tweets for User 1:', tweets1);
+
             const tweets2 = await fetch(`/api/tweets?userId=${user2Id}&limit=100`).then(res => res.json());
+            console.log('Tweets for User 2:', tweets2);
+
+            const requestBody = { tweets1, tweets2 };
+            console.log('Data sent to Claude API:', requestBody);
 
             const response = await fetch('/api/claude', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ tweets1, tweets2 })
+                body: JSON.stringify(requestBody)
             });
 
-            const { lyrics } = await response.json();
+            const responseData = await response.json();
+            console.log('Claude API response data:', responseData);
+
+            const { lyrics } = responseData;
+            if (!lyrics) {
+                throw new Error('Lyrics not found in response');
+            }
+
             displayRapLyrics(lyrics, user1Id, user2Id);
         } catch (error) {
             console.error('Error generating rap:', error);

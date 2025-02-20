@@ -32,8 +32,16 @@ app.post('/api/claude', async (req, res) => {
             body: JSON.stringify({ prompt, tweets1, tweets2 })
         });
 
-        const data = await response.json();
-        res.json(data);
+        const responseText = await response.text();
+        console.log('Claude API response:', responseText);
+
+        if (response.ok) {
+            const data = JSON.parse(responseText);
+            res.json(data);
+        } else {
+            console.error('Error from Claude API:', responseText);
+            res.status(500).json({ error: 'Failed to generate rap lyrics' });
+        }
     } catch (error) {
         console.error('Error calling Claude API:', error);
         res.status(500).json({ error: 'Failed to generate rap lyrics' });
@@ -61,6 +69,32 @@ app.get('/api/users', async (req, res) => {
     } catch (error) {
         console.error('Error fetching users:', error);
         res.status(500).json({ error: 'Failed to load users' });
+    }
+});
+
+// Route to fetch tweets for a specific user
+app.get('/api/tweets', async (req, res) => {
+    const { userId, limit } = req.query;
+
+    try {
+        const response = await fetch(`${supabaseUrl}/rest/v1/tweets?account_id=eq.${userId}&limit=${limit}`, {
+            method: 'GET',
+            headers: {
+                'apikey': supabaseKey,
+                'Authorization': `Bearer ${supabaseKey}`,
+                'Content-Type': 'application/json'
+            }
+        });
+
+        const data = await response.json();
+        if (response.ok) {
+            res.json(data);
+        } else {
+            throw new Error(data.message || 'Failed to fetch tweets');
+        }
+    } catch (error) {
+        console.error('Error fetching tweets:', error);
+        res.status(500).json({ error: 'Failed to load tweets' });
     }
 });
 
