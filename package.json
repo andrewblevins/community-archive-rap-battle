@@ -5,7 +5,6 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "install": "npm install express dotenv @supabase/supabase-js @anthropic-ai/sdk",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
@@ -20,6 +19,10 @@
   },
   "homepage": "https://github.com/andrewblevins/community-archive-rap-battle#readme",
   "dependencies": {
-    "dotenv": "^16.0.3"
+    "@anthropic-ai/sdk": "^0.36.3",
+    "@supabase/supabase-js": "^2.48.1",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "node-fetch": "^3.3.2"
   }
 }
