@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             const tweets1Text = tweets1.map(tweet => `- ${tweet.full_text}`).join('\n');
             const tweets2Text = tweets2.map(tweet => `- ${tweet.full_text}`).join('\n');
 
-            const prompt = `Create a rap battle between two Twitter users based on their tweets. Focus on their main ideas and differences. Use their words and phrases directly when possible.\n\n${user1Name} Tweets:\n${tweets1Text}\n\n${user2Name} Tweets:\n${tweets2Text}`;
+            const prompt = `You will write a rap battle between two Twitter users based on their tweets, expressing each user's worldview and ideas and focusing on disagreements or differences in emphasis. Use each user's words, phrases, and voice directly when possible, don't just round off to usual patterns. Get to the heart of who both people are, and also make their insults targeted at who the other person is. In your output only include an original song title (on its own line, without the twitter handles) and the lyrics, no preamble or follow-up.\n\n${user1Name} Tweets:\n${tweets1Text}\n\n${user2Name} Tweets:\n${tweets2Text}`;
 
             const requestBody = { prompt };
             console.log('Data sent to Claude API:', requestBody);

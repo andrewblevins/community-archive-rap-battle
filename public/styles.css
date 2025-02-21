@@ -17,6 +17,7 @@ body {
     max-width: 800px;
     margin: 0 auto;
     text-align: center;
+    padding-bottom: 40px;
 }
 
 h1 {
@@ -63,6 +64,7 @@ button {
     border-radius: 5px;
     cursor: pointer;
     transition: transform 0.2s;
+    margin-top: 20px;
 }
 
 button:hover {
@@ -121,6 +123,7 @@ button:disabled {
     margin-top: 30px;
     text-align: left;
     white-space: pre-wrap;
+    margin-bottom: 20px;
 }
 
 .rapper1-verse {
@@ -141,4 +144,13 @@ button:disabled {
 
 .hidden {
     display: none !important;
+}
+
+#generate-audio-btn {
+    margin-top: 30px;
+}
+
+#audio-instructions {
+    margin-top: 10px;
+    font-size: 14px;
 } 
