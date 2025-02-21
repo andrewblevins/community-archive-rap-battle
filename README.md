@@ -12,7 +12,7 @@ Currently running on Priya's private Claude credits -- support the project by Ve
 - Generates rap lyrics using the Claude API.
 - Displays the rap battle with styled text for each user.
 
-TODO 
+## TODO 
 - Find way to connect more directly with Suno (no API but unofficial one here: https://github.com/gcui-art/suno-api?tab=readme-ov-file)
 - Ability to search through dropdown menus more easily
 - Cool loading graphics while generating is happening
