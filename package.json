@@ -1,0 +1,24 @@
+{
+  "name": "community-archive-rap-battle",
+  "version": "1.0.0",
+  "description": "A rap battle generator built on top of https://www.community-archive.org/",
+  "main": "server.js",
+  "scripts": {
+    "install": "npm install express dotenv @supabase/supabase-js @anthropic-ai/sdk",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrewblevins/community-archive-rap-battle.git"
+  },
+  "author": "andrew blevins and priya rose",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andrewblevins/community-archive-rap-battle/issues"
+  },
+  "homepage": "https://github.com/andrewblevins/community-archive-rap-battle#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3"
+  }
+}
