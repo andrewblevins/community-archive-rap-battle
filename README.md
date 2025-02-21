@@ -2,7 +2,7 @@
 
 This project is an app that generates rap battles between two Twitter users based on their tweets.
 
-Created during the (Community Archive Hackathon)[www.community-archive.org] at (Fractal Tech)[https://fractaltechhub.com/]. 
+Created during the [Community Archive Hackathon](www.community-archive.org) at [Fractal Tech](https://fractaltechhub.com/). 
 
 Currently running on Priya's private Claude credits -- support the project by Venmoing @Priya-Ghose.
 
