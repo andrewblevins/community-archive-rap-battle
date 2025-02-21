@@ -2,7 +2,7 @@
 
 This project is an app that generates rap battles between two Twitter users based on their tweets.
 
-Created during the [Community Archive Hackathon](www.community-archive.org) at [Fractal Tech](https://fractaltechhub.com/). 
+Created during the 2025 [Community Archive](https://www.community-archive.org/) Hackathon at [Fractal Tech](https://fractaltechhub.com/). 
 
 Currently running on Priya's private Claude credits -- support the project by Venmoing @Priya-Ghose.
 
@@ -31,8 +31,3 @@ TODO
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Acknowledgments
-
-- Thanks to the creators of the Claude API for providing the tools to generate creative content.
-- Special thanks to the Supabase team for their excellent database services.
