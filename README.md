@@ -32,3 +32,52 @@ Currently running on Priya's private Claude credits -- support the project by Ve
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Installation
+
+To set up the Twitter Rap Battle Generator locally, follow these steps:
+
+1. **Clone the repository:**
+
+   ```bash
+   git clone https://github.com/andrewblevins/community-archive-rap-battle.git
+   cd community-archive-rap-battle
+   ```
+
+2. **Install dependencies:**
+
+   Make sure you have [Node.js](https://nodejs.org/) installed. Then, run:
+
+   ```bash
+   npm install
+   ```
+
+3. **Set up environment variables:**
+
+   Create a `.env` file in the root directory and add the following environment variables:
+
+   ```plaintext
+   SUPABASE_URL=your_supabase_url
+   SUPABASE_ANON_KEY=your_supabase_anon_key
+   CLAUDE_API_KEY=your_claude_api_key
+   ```
+
+   Replace `your_supabase_url`, `your_supabase_anon_key`, and `your_claude_api_key` with your actual Supabase and Claude API credentials.
+
+4. **Run the application:**
+
+   Start the server with:
+
+   ```bash
+   npm start
+   ```
+
+   The application will be available at `http://localhost:3000`.
+
+5. **Access the application:**
+
+   Open your web browser and navigate to `http://localhost:3000` to start using the Twitter Rap Battle Generator.
+
+6. **Contributing:**
+
+   Please do! Fork the repository and create a pull request with your changes. See the TODO list above for ideas or add your own.
