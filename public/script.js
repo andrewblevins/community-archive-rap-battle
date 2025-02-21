@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     const generateBtn = document.getElementById('generate-btn');
     const loader = document.getElementById('loader');
     const rapLyrics = document.getElementById('rap-lyrics');
+    const generateAudioBtn = document.getElementById('generate-audio-btn');
+    const audioInstructions = document.getElementById('audio-instructions');
 
     // Fetch users and populate dropdowns
     async function fetchUsers() {
@@ -129,9 +131,15 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
 
         rapLyrics.classList.remove('hidden');
+        generateAudioBtn.classList.remove('hidden');
+        audioInstructions.classList.remove('hidden');
     }
 
     generateBtn.addEventListener('click', generateRap);
+
+    generateAudioBtn.addEventListener('click', () => {
+        window.open('https://suno.com/create', '_blank');
+    });
 
     // Initial fetch of users
     fetchUsers();
