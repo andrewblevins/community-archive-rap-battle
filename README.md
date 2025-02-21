@@ -13,14 +13,15 @@ Currently running on Priya's private Claude credits -- support the project by Ve
 - Displays the rap battle with styled text for each user.
 
 ## TODO 
-- Find way to connect more directly with Suno (no API but unofficial one here: https://github.com/gcui-art/suno-api?tab=readme-ov-file)
-- Ability to search through dropdown menus more easily
-- Cool loading graphics while generating is happening
-- Give more precise error messages (e.g. is it failing because low money in Claude account?)
-- Ability to vote on who wins the rap battle
-- Use community data to detect current beefs and auto-generate raps
-- Twitter bot that tweets out all generated raps
-- Update UI so it displays both people's profile pics
+
+- [ ] Find way to connect more directly with Suno (no API but unofficial one here: https://github.com/gcui-art/suno-api?tab=readme-ov-file)
+- [ ] Ability to search through dropdown menus more easily
+- [ ] Cool loading graphics while generating is happening
+- [ ] Give more precise error messages (e.g. is it failing because low money in Claude account?)
+- [ ] Ability to vote on who wins the rap battle
+- [ ] Use community data to detect current beefs and auto-generate raps
+- [ ] Twitter bot that tweets out all generated raps
+- [ ] Update UI so it displays both people's profile pics
 
 ## Authors
 
