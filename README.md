@@ -22,6 +22,7 @@ Currently running on Priya's private Claude credits -- support the project by Ve
 - [ ] Use community data to detect current beefs and auto-generate raps
 - [ ] Twitter bot that tweets out all generated raps
 - [ ] Update UI so it displays both people's profile pics
+- [ ] Add logging and/or uptime bot and/or real time posts to Discord channel every time someone creates a rap
 
 ## Authors
 
