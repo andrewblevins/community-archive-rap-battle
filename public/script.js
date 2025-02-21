@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const rapLyrics = document.getElementById('rap-lyrics');
     const generateAudioBtn = document.getElementById('generate-audio-btn');
     const audioInstructions = document.getElementById('audio-instructions');
+    const copyLyricsBtn = document.getElementById('copy-lyrics-btn');
 
     // Fetch users and populate dropdowns
     async function fetchUsers() {
@@ -130,10 +131,45 @@ document.addEventListener('DOMContentLoaded', async () => {
             rapLyrics.appendChild(document.createElement('br')); // Add a line break
         });
 
+        // Create a simple copy button
+        const simpleCopyBtn = document.createElement('button');
+        simpleCopyBtn.textContent = 'Copy Lyrics';
+        simpleCopyBtn.style.marginTop = '10px';
+        simpleCopyBtn.style.padding = '8px 16px';
+        simpleCopyBtn.style.background = 'var(--secondary-color)';
+        simpleCopyBtn.style.color = 'white';
+        simpleCopyBtn.style.border = 'none';
+        simpleCopyBtn.style.borderRadius = '5px';
+        simpleCopyBtn.style.cursor = 'pointer';
+
+        // Add click event to copy lyrics
+        simpleCopyBtn.addEventListener('click', () => {
+            navigator.clipboard.writeText(updatedLyrics).then(() => {
+                alert('Lyrics copied to clipboard!');
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+            });
+        });
+
+        // Append the simple copy button to the rap lyrics container
+        rapLyrics.appendChild(simpleCopyBtn);
+
         rapLyrics.classList.remove('hidden');
         generateAudioBtn.classList.remove('hidden');
         audioInstructions.classList.remove('hidden');
+        console.log('Displaying rap lyrics and showing copy button');
+        copyLyricsBtn.classList.remove('hidden');
+        console.log('Copy button should now be visible');
     }
+
+    copyLyricsBtn.addEventListener('click', () => {
+        const lyricsText = rapLyrics.textContent;
+        navigator.clipboard.writeText(lyricsText).then(() => {
+            alert('Lyrics copied to clipboard!');
+        }).catch(err => {
+            console.error('Failed to copy text: ', err);
+        });
+    });
 
     generateBtn.addEventListener('click', generateRap);
 

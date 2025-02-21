@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rap Battle Generator</title>
+    <title>Twitter Rap Battle Generator</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>Rap Battle Generator</h1>
+        <h1>Twitter Rap Battle Generator</h1>
         
         <div class="battle-selectors">
             <div class="selector">
@@ -38,7 +38,10 @@
             <div class="dot"></div>
         </div>
 
-        <div id="rap-lyrics" class="battle-result hidden"></div>
+        <div id="rap-lyrics" class="battle-result hidden">
+            <!-- Lyrics will be dynamically inserted here -->
+            <button id="copy-lyrics-btn" class="copy-button hidden">Copy</button>
+        </div>
 
         <button id="generate-audio-btn" class="hidden">Generate Audio</button>
         <p id="audio-instructions" class="hidden">
