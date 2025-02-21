@@ -23,6 +23,7 @@ Currently running on Priya's private Claude credits -- support the project by Ve
 - [ ] Twitter bot that tweets out all generated raps
 - [ ] Update UI so it displays both people's profile pics
 - [ ] Add logging and/or uptime bot and/or real time posts to Discord channel every time someone creates a rap
+- [ ] Is there a free open source model that is as good at writing raps as Claude? I don't know how much money we'd spend in Claude credits if we went viral.
 
 ## Authors
 
