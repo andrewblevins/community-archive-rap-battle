@@ -1,8 +1,8 @@
-# Rap Battle Generator
+# Twitter Rap Battle Generator
 
-This project is an app that generates rap battles between two Twitter users based on their tweets.
+This project is an app that generates rap battles between two Twitter users based on their tweets, drawing on tweets uploaded to the [Community Archive](https://www.community-archive.org/).
 
-Created during the 2025 [Community Archive](https://www.community-archive.org/) Hackathon at [Fractal Tech](https://fractaltechhub.com/). 
+Created during the 2025 Community Archive Hackathon at [Fractal Tech](https://fractaltechhub.com/). 
 
 Currently running on Priya's private Claude credits -- support the project by Venmoing @Priya-Ghose.
 
