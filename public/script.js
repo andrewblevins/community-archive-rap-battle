@@ -27,12 +27,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         users.forEach(user => {
             const option1 = document.createElement('option');
             option1.value = user.account_id;
-            option1.textContent = user.username;
+            option1.textContent = `@${user.username}`;
             user1Dropdown.appendChild(option1);
 
             const option2 = document.createElement('option');
             option2.value = user.account_id;
-            option2.textContent = user.username;
+            option2.textContent = `@${user.username}`;
             user2Dropdown.appendChild(option2);
         });
 

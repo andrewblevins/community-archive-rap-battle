@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A rap battle generator built on top of https://www.community-archive.org/",
   "main": "server.js",
+  "type": "module",
   "scripts": {
     "install": "npm install express dotenv @supabase/supabase-js @anthropic-ai/sdk",
     "test": "echo \"Error: no test specified\" && exit 1",
