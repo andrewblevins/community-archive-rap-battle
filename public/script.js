@@ -60,10 +60,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         loader.textContent = 'Generating rap BATTLE. Who will DESTROy who??';
 
         try {
-            const tweets1 = await fetch(`/api/tweets?userId=${user1Id}&limit=50`).then(res => res.json());
+            const tweets1 = await fetch(`/api/tweets?userId=${user1Id}&limit=500`).then(res => res.json());
             console.log('Tweets for User 1:', tweets1);
 
-            const tweets2 = await fetch(`/api/tweets?userId=${user2Id}&limit=50`).then(res => res.json());
+            const tweets2 = await fetch(`/api/tweets?userId=${user2Id}&limit=500`).then(res => res.json());
             console.log('Tweets for User 2:', tweets2);
 
             // Concatenate tweets into a single string for each user
