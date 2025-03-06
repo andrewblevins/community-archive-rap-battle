@@ -15,6 +15,7 @@ Currently running on Priya's private Claude credits -- support the project by Ve
 ## TODO 
 
 - [ ] The raps are currently super skewed towards most recent topics because we're just grabbing 500 tweets (and that might include top level tweets and replies? I'm not sure). I think we can grab and send way more tweets and the app should be roughly as fast. Or we can grab top tweets rather than most recent tweets. We should just have a character limit for the text we send to Claude.
+- [ ] Have the response text get streamed in real-time so it feels faster, rather than waiting for the full response. I believe we can do this with the Vercel SDK: https://sdk.vercel.ai/docs/ai-sdk-ui/chatbot
 - [ ] Find way to connect more directly with Suno (no API but unofficial one here: https://github.com/gcui-art/suno-api?tab=readme-ov-file)
 - [ ] Ability to search through dropdown menus more easily
 - [ ] Cool loading graphics while generating is happening
